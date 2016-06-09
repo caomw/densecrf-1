@@ -1,6 +1,12 @@
 add_executable( dense_inference ppm.cpp common.cpp dense_inference.cpp )
 target_link_libraries( dense_inference densecrf )
 
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_executable( dense_inference_cv ppm.cpp common.cpp dense_inference_cv.cpp )
+target_link_libraries( dense_inference_cv densecrf ${OpenCV_LIBS})
+
 add_executable( dense_learning ppm.cpp common.cpp dense_learning.cpp )
 target_link_libraries( dense_learning densecrf optimization )
 
